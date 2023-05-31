@@ -47,5 +47,11 @@ namespace APIRest.Controllers
             }
         }
 
+        //DELETE api/Producto/1
+        public bool Delete(int id)
+        {
+            return productos.Remove(id);
+        }
+
     }
 }

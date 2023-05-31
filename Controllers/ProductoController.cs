@@ -28,5 +28,24 @@ namespace APIRest.Controllers
             return encontrado;
         }
 
+        //POST api/Producto
+        //FromBody: Cuando haga la peticion de un producto la voy a mandar en formato JSON,
+        //entonces esta etiqueta va a permitir automaticamente convertir mi formato JSON en un
+        //objeto de tipo producto
+        public bool Post([FromBody] Producto producto)
+        {
+            Producto encontrado;
+            productos.TryGetValue(producto.IdProducto, out encontrado);
+            if(encontrado == null)
+            {
+                productos.Add(producto.IdProducto, producto);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }
